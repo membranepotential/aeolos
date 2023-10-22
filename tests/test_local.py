@@ -5,12 +5,12 @@ import json
 from subprocess import Popen, run
 import time
 
-from aeolus.executor.local import Local as LocalExecutor
-from aeolus.repository.local import Local as LocalRepository
-from aeolus.storage.local import Local as LocalStorage
-from aeolus.context import AeolusContext
+from aeolos.executor.local import Local as LocalExecutor
+from aeolos.repository.local import Local as LocalRepository
+from aeolos.storage.local import Local as LocalStorage
+from aeolos.context import AeolosContext
 
-AEOLUS_CMD = ["poetry", "run", "aeolus"]
+AEOLOS_CMD = ["poetry", "run", "aeolos"]
 
 
 @pytest.fixture
@@ -59,7 +59,7 @@ def long_running_config():
 
 @pytest.fixture
 def context(executor, repository, storage, config):
-    return AeolusContext(
+    return AeolosContext(
         config=config,
         executor=executor,
         repository=repository,
@@ -69,7 +69,7 @@ def context(executor, repository, storage, config):
 
 @pytest.fixture
 def long_running_context(executor, repository, storage, long_running_config):
-    return AeolusContext(
+    return AeolosContext(
         config=long_running_config,
         executor=executor,
         repository=repository,
@@ -77,7 +77,7 @@ def long_running_context(executor, repository, storage, long_running_config):
     )
 
 
-def test_storage(context: AeolusContext):
+def test_storage(context: AeolosContext):
     executor = context.executor
     storage = context.storage
     step = context.job[0]
@@ -109,7 +109,7 @@ def test_launch(context):
     config = context.as_json()
     print(config)
     proc = run(
-        AEOLUS_CMD + ["-j", config, "launch"],
+        AEOLOS_CMD + ["-j", config, "launch"],
         capture_output=True,
     )
     print(proc.stdout.decode())
@@ -119,20 +119,20 @@ def test_launch(context):
 
 def test_status(long_running_context):
     config = long_running_context.as_json()
-    Popen(AEOLUS_CMD + ["-j", config, "launch"])
+    Popen(AEOLOS_CMD + ["-j", config, "launch"])
 
     time.sleep(0.1)
-    proc = run(AEOLUS_CMD + ["-j", config, "status"], capture_output=True, check=True)
+    proc = run(AEOLOS_CMD + ["-j", config, "status"], capture_output=True, check=True)
     status = json.loads(proc.stdout)
     assert status == {"touch_1": "done", "sleep": "pending", "touch_2": "pending"}
 
 
 def test_terminate(long_running_context):
     config = long_running_context.as_json()
-    proc = Popen(AEOLUS_CMD + ["-j", config, "launch"])
+    proc = Popen(AEOLOS_CMD + ["-j", config, "launch"])
 
     time.sleep(0.1)
     assert proc.poll() is None
 
-    run(AEOLUS_CMD + ["-j", config, "terminate"], capture_output=True, check=True)
+    run(AEOLOS_CMD + ["-j", config, "terminate"], capture_output=True, check=True)
     assert proc.poll() is not None

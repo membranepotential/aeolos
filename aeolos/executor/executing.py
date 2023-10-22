@@ -1,6 +1,6 @@
 from contextlib import contextmanager
 
-from aeolus import Executor, Step
+from aeolos import Executor, Step
 
 
 class Executing:

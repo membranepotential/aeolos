@@ -3,7 +3,7 @@ from moto import mock_ec2
 import boto3
 from uuid import uuid4
 
-from aeolus.executor.ec2 import EC2 as EC2Executor
+from aeolos.executor.ec2 import EC2 as EC2Executor
 
 
 @pytest.fixture

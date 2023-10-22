@@ -7,7 +7,7 @@ from typing import Iterator, TextIO
 from psutil import Process
 import time
 
-from aeolus import Executor, Step
+from aeolos import Executor, Step
 
 
 class Local(Executor):
@@ -33,7 +33,7 @@ class Local(Executor):
 
     @contextmanager
     def setup(self) -> Iterator[str]:
-        with TemporaryDirectory(prefix="aeolus_") as workdir:
+        with TemporaryDirectory(prefix="aeolos_") as workdir:
             self._process = Process()
 
             pid_file = Path(workdir) / "__pid__"

@@ -1,12 +1,12 @@
 [tool.poetry]
-name = "aeolus"
+name = "aeolos"
 version = "1.0.0"
 license = "MIT"
 description = "A task runner"
 authors = ["Felix Peppert <felix.peppert@pm.me>"]
 readme = "README.md"
 
-scripts = { aeolus = "aeolus.cli:app" }
+scripts = { aeolos = "aeolos.cli:app" }
 
 [tool.poetry.dependencies]
 python = "^3.11"

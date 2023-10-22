@@ -3,7 +3,7 @@ import os
 import boto3
 from botocore.exceptions import ClientError
 
-from aeolus import Storage, Step
+from aeolos import Storage, Step
 
 
 class S3(Storage):

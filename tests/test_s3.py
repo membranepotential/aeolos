@@ -2,8 +2,8 @@ import pytest
 from moto.server import ThreadedMotoServer
 import boto3
 
-from aeolus.storage.s3 import S3 as S3Storage
-from aeolus import Step
+from aeolos.storage.s3 import S3 as S3Storage
+from aeolos import Step
 
 
 @pytest.fixture

@@ -3,7 +3,7 @@ from pathlib import Path
 
 from .base import Storage
 
-from aeolus import Step
+from aeolos import Step
 
 
 class Local(Storage):
@@ -17,7 +17,6 @@ class Local(Storage):
             yield
         finally:
             self.command(["cp", "__log__", self.basepath.as_posix()])
-        
 
     def pull(self, step: Step):
         step_path = self.basepath / step.job_id / step.id

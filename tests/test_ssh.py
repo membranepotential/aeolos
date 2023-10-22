@@ -2,7 +2,7 @@ import docker
 import pytest
 import time
 
-from aeolus.executor.ec2 import SSH as SSHExecutor
+from aeolos.executor.ec2 import SSH as SSHExecutor
 
 
 @pytest.fixture

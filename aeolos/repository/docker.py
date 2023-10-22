@@ -1,6 +1,6 @@
 import shlex
 
-from aeolus import Step, Repository
+from aeolos import Step, Repository
 
 
 class DockerRunner(Repository):

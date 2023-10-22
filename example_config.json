@@ -1,12 +1,12 @@
 {
   "executor": {
-    "__class__": "aeolus.executor.Local"
+    "__class__": "aeolos.executor.Local"
   },
   "repository": {
-    "__class__": "aeolus.repository.Local"
+    "__class__": "aeolos.repository.Local"
   },
   "storage": {
-    "__class__": "aeolus.storage.Local"
+    "__class__": "aeolos.storage.Local"
   },
   "stages": [
     {

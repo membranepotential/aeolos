@@ -1,4 +1,4 @@
-# Aeolus
+# Aeolos
 
 CLI to run a _task_ with an _executor_.
 A _repository_ provides executables, e.g. docker container.

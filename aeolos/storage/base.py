@@ -1,8 +1,8 @@
 from abc import ABC, abstractmethod
 
-from aeolus import Step
-from aeolus.utils import ConfigurableObject
-from aeolus.executor.executing import Executing
+from aeolos import Step
+from aeolos.utils import ConfigurableObject
+from aeolos.executor.executing import Executing
 
 
 class Storage(ABC, ConfigurableObject, Executing):

@@ -1,10 +1,10 @@
 from tempfile import TemporaryDirectory
 import pytest
 
-from aeolus.executor.local import Local as LocalExecutor
-from aeolus.repository.local import Local as LocalRepository
-from aeolus.storage.local import Local as LocalStorage
-from aeolus.context import AeolusContext
+from aeolos.executor.local import Local as LocalExecutor
+from aeolos.repository.local import Local as LocalRepository
+from aeolos.storage.local import Local as LocalStorage
+from aeolos.context import AeolosContext
 
 
 @pytest.fixture
@@ -53,7 +53,7 @@ def long_running_config():
 
 @pytest.fixture
 def context(executor, repository, storage, config):
-    return AeolusContext(
+    return AeolosContext(
         config=config,
         executor=executor,
         repository=repository,
@@ -63,7 +63,7 @@ def context(executor, repository, storage, config):
 
 @pytest.fixture
 def long_running_context(executor, repository, storage, long_running_config):
-    return AeolusContext(
+    return AeolosContext(
         config=long_running_config,
         executor=executor,
         repository=repository,

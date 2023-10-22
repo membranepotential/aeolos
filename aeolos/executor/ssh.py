@@ -3,7 +3,7 @@ from typing import Iterator
 from fabric import Connection
 from secrets import token_hex
 
-from aeolus import Executor, Step
+from aeolos import Executor, Step
 
 
 class SSH(Executor):

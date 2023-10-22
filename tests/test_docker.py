@@ -1,5 +1,5 @@
-from aeolus.repository.docker import DockerRegistry
-from aeolus import Step
+from aeolos.repository.docker import DockerRegistry
+from aeolos import Step
 
 
 def test_docker(executor):

@@ -3,20 +3,20 @@ from dataclasses import dataclass
 import json
 from typing import Any
 
-from aeolus import Stage, Task, Job, Executor, Storage, Repository
-from aeolus.utils import ConfigurableObject
-from aeolus.executor.executing import Executing
+from aeolos import Stage, Task, Job, Executor, Storage, Repository
+from aeolos.utils import ConfigurableObject
+from aeolos.executor.executing import Executing
 
 
 @dataclass
-class AeolusContext:
+class AeolosContext:
     config: dict[str, Any]
     executor: Executor
     storage: Storage
     repository: Repository
 
     @classmethod
-    def from_config(cls, config: dict[str, Any]) -> "AeolusContext":
+    def from_config(cls, config: dict[str, Any]) -> "AeolosContext":
         return cls(
             config=config,
             executor=ConfigurableObject.load_dict(config["executor"]),

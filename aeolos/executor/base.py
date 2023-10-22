@@ -2,8 +2,8 @@ from abc import ABC, abstractmethod
 from contextlib import contextmanager
 from typing import Iterator
 
-from aeolus import Step
-from aeolus.utils import ConfigurableObject
+from aeolos import Step
+from aeolos.utils import ConfigurableObject
 
 
 class NotConnectedError(Exception):

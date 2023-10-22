@@ -1,13 +1,13 @@
 from typer.testing import CliRunner
 
-from aeolus import AeolusContext
-from aeolus.cli.cli import read_configs, app, ctx
+from aeolos import AeolosContext
+from aeolos.cli.cli import read_configs, app, ctx
 
 
 def test_read_context(context):
     json = context.as_json()
     config = read_configs([], [json])
-    assert AeolusContext.from_config(config)
+    assert AeolosContext.from_config(config)
 
 
 def test_cli(context):

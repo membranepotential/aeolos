@@ -5,14 +5,14 @@ import json
 import typer
 from typing_extensions import Annotated
 
-from ..context import AeolusContext
+from ..context import AeolosContext
 
 
 class DuplicateConfigError(ValueError):
     pass
 
 
-ctx: Optional[AeolusContext] = None
+ctx: Optional[AeolosContext] = None
 
 
 def add_to_config(config: dict[str, Any], extra: dict[str, Any]) -> dict[str, Any]:
@@ -54,7 +54,7 @@ def cli(
     config = read_configs(configs, jsons)
 
     global ctx
-    ctx = AeolusContext.from_config(config)
+    ctx = AeolosContext.from_config(config)
 
 
 @app.command()

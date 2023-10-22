@@ -1,4 +1,4 @@
-from aeolus import Step, Repository
+from aeolos import Step, Repository
 
 
 class Local(Repository):
