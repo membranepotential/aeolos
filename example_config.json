@@ -1,0 +1,30 @@
+{
+  "executor": {
+    "__class__": "aeolus.executor.Local"
+  },
+  "repository": {
+    "__class__": "aeolus.repository.Local"
+  },
+  "storage": {
+    "__class__": "aeolus.storage.Local"
+  },
+  "stages": [
+    {
+      "id": "first",
+      "command": "echo {msg} > first.txt"
+    },
+    {
+      "id": "second",
+      "command": "echo {msg} > second.txt"
+    }
+  ],
+  "config": {
+    "__id__": "job-id",
+    "first": {
+      "msg": "hello"
+    },
+    "second": {
+      "msg": "world"
+    }
+  }
+}
