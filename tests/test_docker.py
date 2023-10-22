@@ -1,9 +1,9 @@
-from aeolus.repository.docker import Docker
+from aeolus.repository.docker import DockerRegistry
 from aeolus import Step
 
 
 def test_docker(executor):
-    repository = Docker()
+    repository = DockerRegistry()
     step = Step(
         id="test_step",
         job_id="test_job",

@@ -1,25 +1,13 @@
-from contextlib import contextmanager
 import shlex
 
 from aeolus import Step, Repository
 
 
-class Docker(Repository):
-    def __init__(self, url: str = ""):
-        self.url = url
-
-    @contextmanager
-    def setup(self):
-        yield
-
-    def pull(self, step: Step):
+class DockerRunner(Repository):
+    def get_image(self, step: Step) -> str:
         image = step.command
-        if self.url:
-            image = self.url + "/" + image
         if "tag" in step.config:
             image += ":" + step.config["tag"]
-
-        self.command(["docker", "pull", image], step=step)
         return image
 
     def run(self, step: Step):
@@ -38,10 +26,35 @@ class Docker(Repository):
         if "docker_args" in step.config:
             args += step.config["docker_args"]
 
-        image = self.pull(step)
+        image = self.get_image(step)
         args += [image]
 
         if "command" in step.config:
             args += shlex.split(step.config["command"])
 
         self.command(["docker", "run", "--rm", *args], step=step)
+
+
+class DockerImporter(DockerRunner):
+    def __init__(self, url: str):
+        self.url = url
+
+    def get_image(self, step: Step) -> str:
+        image = step.command
+        self.command(["docker", "import", f"{self.url}/{step.command}.tgz", image])
+        return image
+
+
+class DockerRegistry(DockerRunner):
+    def __init__(self, url: str = ""):
+        self.url = url
+
+    def get_image(self, step: Step) -> str:
+        image = step.command
+        if self.url:
+            image = self.url + "/" + image
+        if "tag" in step.config:
+            image += ":" + step.config["tag"]
+
+        self.command(["docker", "pull", image], step=step)
+        return image

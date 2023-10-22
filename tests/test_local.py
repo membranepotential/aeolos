@@ -10,7 +10,7 @@ from aeolus.repository.local import Local as LocalRepository
 from aeolus.storage.local import Local as LocalStorage
 from aeolus.context import AeolusContext
 
-AEOLUS_CMD = ["poetry", "run", "python", "-m", "aeolus"]
+AEOLUS_CMD = ["poetry", "run", "aeolus"]
 
 
 @pytest.fixture
